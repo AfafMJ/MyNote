@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
         android:layout_margin="10dp"
-        app:cardBackgroundColor="#605F5F"
+        app:cardBackgroundColor="#94595959"
         >
         <View
             android:layout_width="20dp"

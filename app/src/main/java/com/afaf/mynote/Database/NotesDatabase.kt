@@ -10,16 +10,17 @@ import com.afaf.mynote.Model.Notes
 @Database(entities = [Notes::class] , version = 1 , exportSchema = false)
 abstract class NotesDatabase: RoomDatabase() {
     abstract fun myNotesDao(): NotesDao
-    companion object{
+
+    companion object {
         @Volatile
         var INSTANCE: NotesDatabase? = null
 
-        fun getDatabaseInstance(context: Context):NotesDatabase{
+        fun getDatabaseInstance(context: Context): NotesDatabase {
             val tempInstance = INSTANCE
-            if(tempInstance != null){
+            if (tempInstance != null) {
                 return tempInstance
             }
-            synchronized(this){  // protection from concurrent execution on multiple threads
+            synchronized(this) {  // protection from concurrent execution on multiple threads
                 val roomDatabaseInstance = Room.databaseBuilder(
                     context,
                     NotesDatabase::class.java,

@@ -1,5 +1,6 @@
 package com.afaf.mynote.ui.Fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.text.format.DateFormat
 import android.util.Log
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.afaf.mynote.Model.Notes
 import com.afaf.mynote.R
@@ -86,8 +88,10 @@ class EditNoteFragment : Fragment() {
         }
 
 
+
         return binding.root
     }
+
 
     private fun updateNotes(it: View?){
         val title = binding.edttitle.text.toString()
@@ -126,7 +130,9 @@ class EditNoteFragment : Fragment() {
 
             textviewyes?.setOnClickListener {
                 viewModel.deleteNotes(oldnotes.data.id!!)
-                Navigation.findNavController(it!!).navigate(R.id.action_editNoteFragment_to_homeFragment)
+
+                Navigation.findNavController(this.requireView()).navigate(R.id.action_editNoteFragment_to_homeFragment)
+                bottomSheet.dismiss()
 
 
             }
